@@ -1,3 +1,7 @@
+html {
+  font-size: 16px;
+}
+
 body {
   width: 70vw;
   margin: 0 auto;
@@ -8,4 +12,32 @@ body {
 
 code {
   font-family: 'Cabin', sans-serif;
+}
+
+@media (max-width: 1400px)
+{
+  html {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 1200px)
+{
+  html {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 1000px)
+{
+  html {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 800px)
+{
+  html {
+    font-size: 7px;
+  }
 }

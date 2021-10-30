@@ -5,3 +5,7 @@ nav {
     align-items: flex-end;
     justify-content: flex-end;
 }
+
+nav img:hover {
+    cursor: pointer;
+}

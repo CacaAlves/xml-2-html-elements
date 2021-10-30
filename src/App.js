@@ -1,37 +1,23 @@
-import { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import React, { useState } from 'react';
 import './App.css';
 import Nav from './components/Nav'
-import Form from './components/Form'
+import LicenseForm from './components/LicenseForm'
 import DataVisualization from './components/DataVisualization'
-import Error from './components/Error'
 
 function App() {
-  const [xmlData, setXmlData] = useState({
-    cpfUsuario: null,
-    dataHoraEnvioFormatada: null,
-    idLote: null,
-    listaLIVORetorno: [],
-  });
+  const [renderedComponent, setRenderedComponent] = useState('License Form');
+  const [xmlData, setXmlData] = useState('');
 
   return (
     <div className="App">
-     <Router>
-       <Nav />
-       <Switch>
-         <Route exact path='/'>
-          <Form setXmlData={setXmlData}/>
-         </Route>
-         
-         <Route path='/data-visualization'>
-            <DataVisualization processedData={xmlData} />
-         </Route>
+      <Nav setRenderedComponent={setRenderedComponent}/>
 
-         <Route path='*'>
-          <Error />
-        </Route>
-       </Switch>
-     </Router>
+      {renderedComponent === 'License Form' ? 
+      <LicenseForm xmlData={xmlData} setXmlData={setXmlData} 
+      setRenderedComponent={setRenderedComponent} /> 
+      : 
+      <DataVisualization xmlData={xmlData} setRenderedComponent={setRenderedComponent}/>}
+
     </div>
   );
 }

@@ -1,13 +1,11 @@
-import { Link } from 'react-router-dom';
-import './Nav.css';
 import homeIcon from './../assets/imgs/home.svg'
+import './Nav.css'
 
-const Nav = () => {
+const Nav = ({ setRenderedComponent }) => {
     return (
         <nav>
-            <Link to='/'>
-                <img src={homeIcon} className="svg" alt="home icon" />
-            </Link>
+            <img src={homeIcon} className="svg" alt="home icon" 
+            onClick={() => setRenderedComponent('License Form')}/>
         </nav>
     );
 };
