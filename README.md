@@ -2,9 +2,6 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Prerequisites
-It requires Java, Javac and a JAVA_HOME variable set up.
-
 ## Available Scripts
 
 In the project directory, you can run:
