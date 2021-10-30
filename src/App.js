@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css';
+import Nav from './components/Nav'
+import Form from './components/Form'
+import DataVisualization from './components/DataVisualization'
+import Error from './components/Error'
 
 function App() {
+  const [xmlData, setXmlData] = useState({
+    cpfUsuario: null,
+    dataHoraEnvioFormatada: null,
+    idLote: null,
+    listaLIVORetorno: [],
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Router>
+       <Nav />
+       <Switch>
+         <Route exact path='/'>
+          <Form setXmlData={setXmlData}/>
+         </Route>
+         
+         <Route path='/data-visualization'>
+            <DataVisualization processedData={xmlData} />
+         </Route>
+
+         <Route path='*'>
+          <Error />
+        </Route>
+       </Switch>
+     </Router>
     </div>
   );
 }
